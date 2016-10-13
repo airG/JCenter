@@ -39,6 +39,7 @@ bintray {
 
     configurations = ['archives']
     pkg {
+        userOrg = bintrayOrg
         repo = bintrayRepo
         name = bintrayName
         desc = libraryDescription
