@@ -31,7 +31,14 @@ artifacts {
 
 // Bintray
 Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+File propsFile = project.rootProject.file('local.properties')
+
+if (propsFile.exists()) {
+	logger.quiet("loading local.properties file")
+	properties.load(propsFile.newDataInputStream())
+}
+else
+	logger.quiet("no local.properties file")
 
 bintray {
     user = properties.getProperty("bintray.user")
